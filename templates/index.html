@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Dark Web Analysis</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Dark Web Analysis</h1>
+        <form method="POST">
+            <input type="text" name="url" placeholder="Enter URL" required>
+            <button type="submit">Analyze</button>
+        </form>
+        <div class="results">
+            {% if results %}
+                <h2>Analysis Results</h2>
+                <ul>
+                {% for line, category in results %}
+                    <li>
+                        <strong>Text:</strong> {{ line }}<br>
+                        <strong>Predicted Category:</strong> {{ category }}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
